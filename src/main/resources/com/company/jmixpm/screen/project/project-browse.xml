@@ -44,6 +44,7 @@
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
+                <action id="generateData" caption="Generate Data" icon="DATABASE"/>
             </actions>
             <columns>
                 <column id="name"/>
@@ -51,12 +52,15 @@
                 <column id="endDate"/>
                 <column id="manager"/>
             </columns>
-            <simplePagination/>
+            <simplePagination itemsPerPageDefaultValue="30"
+                              itemsPerPageVisible="true"
+                              itemsPerPageOptions="10,20,30,40,50"/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
                 <button id="createBtn" action="projectsTable.create"/>
                 <button id="editBtn" action="projectsTable.edit"/>
                 <button id="removeBtn" action="projectsTable.remove"/>
+                <button id="projectsTableGenerateDataBtn" action="projectsTable.generateData"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

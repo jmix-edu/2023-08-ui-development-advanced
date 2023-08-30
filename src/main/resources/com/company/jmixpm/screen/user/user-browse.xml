@@ -54,7 +54,7 @@
                 <column id="email"/>
                 <column id="active"/>
             </columns>
-            <simplePagination/>
+            <simplePagination itemsPerPageVisible="true"/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
                 <button id="createBtn" action="usersTable.create"/>
