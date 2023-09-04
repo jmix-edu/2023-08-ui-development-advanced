@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/ui/fragment">
+    <data>
+        <instance id="addressDc"
+                  class="com.company.jmixpm.entity.Address"
+                  provided="true"/>
+
+        <collection id="citiesDc" class="com.company.jmixpm.entity.City">
+            <fetchPlan extends="_base"/>
+            <loader id="citiesDl">
+                <query>
+                    <![CDATA[select e from City e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+
+    <layout>
+        <form id="addressForm" dataContainer="addressDc">
+            <entityComboBox id="cityField"
+                            property="city"
+                            optionsContainer="citiesDc"/>
+            <textField id="streetField" property="street"/>
+            <textField id="zipcodeField" property="zipcode"/>
+        </form>
+    </layout>
+</fragment>

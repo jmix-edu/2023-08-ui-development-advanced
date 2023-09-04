@@ -27,9 +27,29 @@
         <dataLoadCoordinator auto="true"/>
         <screenSettings auto="true"/>
         <presentations auto="true"/>
+
+        <notification id="mailSendNotification"
+                      caption="msg://mailSendNotification.caption"
+                      type="TRAY"/>
+
+        <inputDialog id="sendEmailDialog"
+                     caption="msg://sendEmailDialog.caption"
+                     dialogActions="OK_CANCEL"
+                     onAction="usersTable.sendEmail">
+            <parameters>
+                <stringParameter id="title"
+                                 caption="msg://sendEmailDialog.title.caption"
+                                 required="true"/>
+                <stringParameter id="body">
+                    <textArea caption="msg://sendEmailDialog.body.caption" required="true" width="100%"/>
+                </stringParameter>
+            </parameters>
+        </inputDialog>
     </facets>
+
     <dialogMode height="600"
                 width="800"/>
+
     <layout spacing="true" expand="usersTable">
         <filter id="filter" dataLoader="usersDl">
             <properties include=".*"/>
@@ -46,6 +66,7 @@
                 <action id="changePassword" type="changePassword"/>
                 <action id="resetPassword" type="resetPassword"/>
                 <action id="resetRememberMeToken" type="resetRememberMeToken"/>
+                <action id="sendEmail" caption="msg://sendEmail.caption" icon="SEND"/>
             </actions>
             <columns>
                 <column id="username"/>
@@ -68,6 +89,8 @@
                         <action id="usersTable.resetRememberMeToken"/>
                     </actions>
                 </popupButton>
+
+                <button id="usersTableSendEmailBtn" action="usersTable.sendEmail"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

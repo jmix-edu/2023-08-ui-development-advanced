@@ -1,5 +1,6 @@
 package com.company.jmixpm.entity;
 
+import io.jmix.core.entity.annotation.EmbeddedParameters;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.entity.annotation.SystemLevel;
 import io.jmix.core.metamodel.annotation.DependsOnProperties;
@@ -22,7 +23,7 @@ import java.util.UUID;
 public class User implements JmixUserDetails {
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     @JmixGeneratedValue
     private UUID id;
 
@@ -50,8 +51,27 @@ public class User implements JmixUserDetails {
     @Column(name = "ACTIVE")
     protected Boolean active = true;
 
+    @EmbeddedParameters(nullAllowed = false)
+    @Embedded
+    @AssociationOverrides({
+            @AssociationOverride(name = "city", joinColumns = @JoinColumn(name = "ADDRESS_CITY_ID"))
+    })
+    @AttributeOverrides({
+            @AttributeOverride(name = "street", column = @Column(name = "ADDRESS_STREET")),
+            @AttributeOverride(name = "zipcode", column = @Column(name = "ADDRESS_ZIPCODE"))
+    })
+    private Address address;
+
     @Transient
     protected Collection<? extends GrantedAuthority> authorities;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public UUID getId() {
         return id;

@@ -7,6 +7,7 @@
                   class="com.company.jmixpm.entity.User">
             <fetchPlan extends="_base"/>
             <loader/>
+            <instance id="addressDc" property="address"/>
         </instance>
     </data>
     <actions>
@@ -25,23 +26,27 @@
     <dialogMode height="600"
                 width="800"/>
     <layout spacing="true" expand="editActions">
-        <form id="form" dataContainer="userDc">
-            <column width="350px">
-                <textField id="usernameField" property="username" editable="false"/>
-                <passwordField id="passwordField"
-                               caption="msg://com.company.jmixpm.entity/User.password"
-                               required="true"
-                               visible="false"/>
-                <passwordField id="confirmPasswordField"
-                               caption="msg://confirmPassword"
-                               required="true"
-                               visible="false"/>
-                <textField id="firstNameField" property="firstName"/>
-                <textField id="lastNameField" property="lastName"/>
-                <textField id="emailField" property="email"/>
-                <checkBox id="activeField" property="active"/>
-            </column>
-        </form>
+        <hbox id="fieldsWrapper" spacing="true" width="AUTO">
+            <form id="form" dataContainer="userDc">
+                <column width="350px">
+                    <textField id="usernameField" property="username" editable="false"/>
+                    <passwordField id="passwordField"
+                                   caption="msg://com.company.jmixpm.entity/User.password"
+                                   required="true"
+                                   visible="false"/>
+                    <passwordField id="confirmPasswordField"
+                                   caption="msg://confirmPassword"
+                                   required="true"
+                                   visible="false"/>
+                    <textField id="firstNameField" property="firstName"/>
+                    <textField id="lastNameField" property="lastName"/>
+                    <textField id="emailField" property="email"/>
+                    <checkBox id="activeField" property="active"/>
+                </column>
+            </form>
+<!--        <fragment screen="AddressFragment"/>-->
+
+        </hbox>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>

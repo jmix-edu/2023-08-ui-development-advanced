@@ -8,6 +8,10 @@
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
+
+        <screen id="userInfoScreen"
+                screenClass="com.company.jmixpm.screen.userinfo.UserInfoScreen"
+                onAction="postsTable.viewUserInfo"/>
     </facets>
     <layout spacing="true" expand="postsTable">
         <pagination id="pagination" itemsPerPageDefaultValue="25">

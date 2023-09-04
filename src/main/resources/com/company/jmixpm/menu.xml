@@ -7,6 +7,8 @@
         <item screen="Project.browse" caption="msg://com.company.jmixpm.screen.project/projectBrowse.menu"/>
         <item screen="Task_.browse" caption="msg://com.company.jmixpm.screen.task/taskBrowse.menu"/>
         <item screen="PostsScreen" caption="msg://com.company.jmixpm.screen.posts/postsScreen.caption"/>
+        <item screen="City.browse" caption="msg://com.company.jmixpm.screen.city/cityBrowse.menu"/>
+        <item screen="City.browse1" caption="msg://com.company.jmixpm.screen.city/cityBrowse1.menu"/>
     </menu>
 
 </menu-config>

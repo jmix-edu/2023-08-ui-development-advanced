@@ -41,8 +41,17 @@ public class PostsScreen extends Screen {
     }
 
 
+    @Install(to = "userInfoScreen", subject = "screenConfigurer")
+    private void userInfoScreenScreenConfigurer(final UserInfoScreen userInfoScreen) {
+        Post selected = postsTable.getSingleSelected();
+        if (selected == null || selected.getUserId() == null) {
+            throw new IllegalStateException("No post selected");
+        }
 
-    @Subscribe("postsTable.viewUserInfo")
+        userInfoScreen.withUserId(selected.getUserId());
+    }
+
+    /*@Subscribe("postsTable.viewUserInfo")
     public void onPostsTableViewUserInfo(final Action.ActionPerformedEvent event) {
         Post selected = postsTable.getSingleSelected();
         if (selected == null || selected.getUserId() == null) {
@@ -54,5 +63,5 @@ public class PostsScreen extends Screen {
                 .build()
                 .withUserId(selected.getUserId())
                 .show();
-    }
+    }*/
 }

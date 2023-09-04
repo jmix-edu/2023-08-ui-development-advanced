@@ -36,7 +36,7 @@
                         <action id="entityClear" type="entity_clear"/>
                     </actions>
                 </entityPicker>
-                <dateField id="startDateField" property="startDate"/>
+                <field id="startDateField" property="startDate"/>
                 <textField id="estimatedEffortsField" property="estimatedEfforts"/>
                 <entityPicker id="projectField" property="project">
                     <actions>
@@ -44,6 +44,11 @@
                         <action id="entityClear" type="entity_clear"/>
                     </actions>
                 </entityPicker>
+
+<!--                <colorPicker id="colorField" property="color" defaultCaptionEnabled="true" width="AUTO"/>-->
+
+                <field id="colorField" property="color" width="AUTO"/>
+
             </column>
         </form>
         <hbox id="editActions" spacing="true">
