@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://sandboxScreen.caption">
+    <layout>
+        <vbox spacing="true">
+            <button id="deleteTextBtn" caption="Delete"/>
+            <jsComponent id="quill"
+                         initFunctionName="com_company_demo_QuillTextEditor"
+                         height="200px"
+                         width="400px">
+                <dependencies>
+                    <dependency path="webjar://quill:dist/quill.js"/>
+                    <dependency path="webjar://quill:dist/quill.snow.css"/>
+                    <dependency path="vaadin://quill/quill-connector.js"/>
+                </dependencies>
+            </jsComponent>
+        </vbox>
+    </layout>
+</window>

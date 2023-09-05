@@ -40,6 +40,8 @@ dependencies {
 
     themes 'io.jmix.ui:jmix-ui-themes'
     implementation 'io.jmix.ui:jmix-ui-themes'
+
+    implementation 'org.webjars.npm:quill:1.3.6'
 }
 
 test {
