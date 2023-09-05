@@ -32,11 +32,13 @@
     </actions>
     <dialogMode height="600"
                 width="800"/>
+
     <layout expand="projectsTable" spacing="true">
         <filter id="filter"
                 dataLoader="projectsDl">
             <properties include=".*"/>
         </filter>
+
         <groupTable id="projectsTable"
                     width="100%"
                     dataContainer="projectsDc">
@@ -63,6 +65,7 @@
                 <button id="projectsTableGenerateDataBtn" action="projectsTable.generateData"/>
             </buttonsPanel>
         </groupTable>
+
         <hbox id="lookupActions" spacing="true" visible="false">
             <button action="lookupSelectAction"/>
             <button action="lookupCancelAction"/>

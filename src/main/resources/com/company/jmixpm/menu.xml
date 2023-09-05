@@ -9,6 +9,8 @@
         <item screen="PostsScreen" caption="msg://com.company.jmixpm.screen.posts/postsScreen.caption"/>
         <item screen="City.browse" caption="msg://com.company.jmixpm.screen.city/cityBrowse.menu"/>
         <item screen="City.browse1" caption="msg://com.company.jmixpm.screen.city/cityBrowse1.menu"/>
+        <item screen="ProgrammaticProjectBrowse"
+              caption="msg://com.company.jmixpm.screen.project/programmaticProjectBrowse.caption"/>
     </menu>
 
 </menu-config>

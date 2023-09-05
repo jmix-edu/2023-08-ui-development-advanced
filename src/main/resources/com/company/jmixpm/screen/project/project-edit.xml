@@ -9,60 +9,105 @@
                 <property name="manager" fetchPlan="_base"/>
                 <property name="tasks" fetchPlan="_base"/>
             </fetchPlan>
-            <loader/>
-            <collection id="tasksDc" property="tasks"/>
+            <loader id="projectDl"/>
         </instance>
+
+        <collection id="tasksDc" class="com.company.jmixpm.entity.Task">
+            <fetchPlan extends="_base"/>
+            <loader id="tasksDl">
+                <query>
+                    <![CDATA[select e from Task_ e where e.project = :project]]>
+                </query>
+            </loader>
+        </collection>
     </data>
     <facets>
-        <dataLoadCoordinator auto="true"/>
+        <dataLoadCoordinator>
+            <refresh loader="projectDl">
+                <onScreenEvent type="BeforeShow"/>
+            </refresh>
+        </dataLoadCoordinator>
         <screenSettings id="settingsFacet" auto="true"/>
     </facets>
     <actions>
-        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+        <action id="windowCommitAndClose" caption="msg:///actions.SaveClose"
                 icon="EDITOR_OK"
                 primary="true"
                 shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowCommit" caption="msg:///actions.Save"
+                icon="SAVE"/>
         <action id="windowClose"
                 caption="msg:///actions.Close"
                 icon="EDITOR_CANCEL"/>
     </actions>
     <dialogMode height="600"
                 width="800"/>
-    <layout spacing="true" expand="editActions">
-        <form id="form" dataContainer="projectDc">
-            <column width="350px">
-                <textField id="nameField" property="name"/>
-                <dateField id="startDateField" property="startDate"/>
-                <dateField id="endDateField" property="endDate"/>
-                <entityPicker id="managerField" property="manager">
+    <layout spacing="true" expand="tabSheet">
+        <tabSheet id="tabSheet">
+            <tab id="infoTab"
+                 margin="true,false,false,false"
+                 caption="msg://infoTab.caption">
+                <form id="form" dataContainer="projectDc">
+                    <column width="350px">
+                        <textField id="nameField" property="name"/>
+                        <dateField id="startDateField" property="startDate"/>
+                        <dateField id="endDateField" property="endDate"/>
+
+                        <entitySuggestionField id="managerField" property="manager"
+                                               inputPrompt="Strat typing..."
+                                               minSearchStringLength="3">
+                            <query entityClass="com.company.jmixpm.entity.User"
+                                   searchStringFormat="%${searchString}%"
+                                   escapeValueForLike="true"
+                                   fetchPlan="_instance_name">
+                                <![CDATA[select e from User e where lower(e.username) like lower(:searchString) escape '\']]>
+                            </query>
+
+                            <actions>
+                                <action id="entityLookup" type="entity_lookup"/>
+                                <action id="entityClear" type="entity_clear"/>
+                            </actions>
+                        </entitySuggestionField>
+
+                        <!--<entityComboBox id="managerField" property="manager" optionsContainer="usersDc">
+                            <actions>
+                                <action id="entityLookup" type="entity_lookup"/>
+                                <action id="entityClear" type="entity_clear"/>
+                            </actions>
+                        </entityComboBox>-->
+                    </column>
+                </form>
+            </tab>
+
+            <tab id="tasksTab"
+                 caption="msg://com.company.jmixpm.entity/Project.tasks"
+                 margin="true,false,false,false"
+                 lazy="true"
+                 expand="tasksTable">
+                <table id="tasksTable" dataContainer="tasksDc" width="100%">
                     <actions>
-                        <action id="entityLookup" type="entity_lookup"/>
-                        <action id="entityClear" type="entity_clear"/>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
                     </actions>
-                </entityPicker>
-            </column>
-        </form>
-        <groupBox id="tasksBox" caption="msg://com.company.jmixpm.entity/Project.tasks">
-            <table id="tasksTable" dataContainer="tasksDc" width="100%" height="200px">
-                <actions>
-                    <action id="create" type="create"/>
-                    <action id="edit" type="edit"/>
-                    <action id="remove" type="remove"/>
-                </actions>
-                <columns>
-                    <column id="name"/>
-                    <column id="startDate"/>
-                    <column id="estimatedEfforts"/>
-                </columns>
-                <buttonsPanel>
-                    <button action="tasksTable.create"/>
-                    <button action="tasksTable.edit"/>
-                    <button action="tasksTable.remove"/>
-                </buttonsPanel>
-            </table>
-        </groupBox>
+                    <columns>
+                        <column id="name"/>
+                        <column id="startDate"/>
+                        <column id="estimatedEfforts"/>
+                    </columns>
+                    <simplePagination/>
+                    <buttonsPanel>
+                        <button action="tasksTable.create"/>
+                        <button action="tasksTable.edit"/>
+                        <button action="tasksTable.remove"/>
+<!--                        <button id="generateDataBtn" caption="Generate Data" icon="DATABASE"/>-->
+                    </buttonsPanel>
+                </table>
+            </tab>
+        </tabSheet>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="commitBtn" action="windowCommit"/>
             <button id="closeBtn" action="windowClose"/>
         </hbox>
     </layout>
