@@ -1,0 +1,19 @@
+@import "../hover/hover-defaults";
+
+$v-app-background-color: #262626;
+$v-background-color: lighten($v-app-background-color, 12%);
+$v-border: 1px solid (v-tint 0.8);
+$font-color: valo-font-color($v-background-color, 0.85);
+$v-button-font-color: $font-color;
+$v-font-color: $font-color;
+$v-link-font-color: lighten($v-focus-color, 15%);
+$v-link-text-decoration: none;
+$v-textfield-background-color: $v-background-color;
+
+$jmix-hover-color: #75a4c1;
+$jmix-maintabsheet-tabcontainer-background-color: $v-app-background-color;
+$jmix-menubar-background-color: lighten($v-app-background-color, 4%);
+$jmix-tabsheet-tab-caption-selected-color: $v-font-color;
+$jmix-window-modal-header-background: $v-background-color;
+
+$jmix-menubar-menuitem-border-radius: 0;

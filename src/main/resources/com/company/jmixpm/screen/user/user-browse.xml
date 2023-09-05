@@ -90,7 +90,7 @@
                     </actions>
                 </popupButton>
 
-                <button id="usersTableSendEmailBtn" action="usersTable.sendEmail"/>
+                <button id="usersTableSendEmailBtn" action="usersTable.sendEmail" stylename="backgroundless"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

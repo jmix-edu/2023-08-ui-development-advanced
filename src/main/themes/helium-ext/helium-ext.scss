@@ -1,0 +1,73 @@
+@import "../helium/helium";
+
+@mixin helium-ext {
+  @include helium;
+
+  &.cobalt {
+    /* Basic */
+  --primary-color: #0055A6;
+  --primary-color_rgb: 0, 85, 166;
+
+    /* Common */
+  --primary-color-shade-1: #004C95;
+  --primary-color-shade-2: #004484;
+  --primary-dim-color: #C6D1EC;
+
+    /* Button */
+  --button-primary-focused-border-color: #C6D1EC;
+  }
+
+  /* CheckBox */
+  --checkbox-focused-background-color: var(--checkbox-background-color);
+  --checkbox-focused-border-color: var(--primary-color);
+
+  --checkbox-checked-background-color: var(--primary-color);
+  --checkbox-checked-border-color: var(--primary-color);
+  --checkbox-checked-color: var(--primary-contrast-text-color);
+
+  --checkbox-checked-focused-background-color: var(--primary-color);
+  --checkbox-checked-focused-border-color: var(--button-primary-focused-border-color);
+  --checkbox-checked-focused-color: var(--primary-contrast-text-color);
+
+  --checkbox-read-only-checked-background-color: var(--border-dim-color);
+  --checkbox-read-only-checked-border-color: var(--border-dim-color);
+  --checkbox-read-only-checked-color: var(--text-contrast-color);
+
+  --checkbox-read-only-checked-focused-background-color: var(--border-dim-color);
+  --checkbox-read-only-checked-focused-border-color: var(--border-color);
+  --checkbox-read-only-checked-focused-color: var(--text-contrast-color);
+
+  --radio-checked-color: var(--primary-contrast-text-color);
+  --radio-read-only-checked-color: var(--text-contrast-color);
+
+
+  .v-button.backgroundless {
+    background: transparent;
+    border-color: var(--secondary-color);
+
+    &:focus:not(.v-disabled),
+    &:hover:not(.v-disabled) {
+      background: transparent;
+      border-color: var(--primary-color);
+    }
+
+    &:active:not(.v-disabled) {
+      background: transparent;
+      border-color: var(--primary-color-shade-2);
+    }
+  }
+
+  .v-table-row-cs.no-estimated-efforts {
+    color: var(--error-color);
+  }
+
+  .v-table-cell-content.no-estimated-efforts .v-table-cell-wrapper {
+    &:before {
+      content: "\2757";
+
+      // ❗️
+      // red exclamation mark
+      // Unicode: U+2757 U+FE0F, UTF-8: E2 9D 97 EF B8 8F
+    }
+  }
+}

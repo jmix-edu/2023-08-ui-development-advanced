@@ -21,7 +21,7 @@
     </data>
 
     <facets>
-        <dataLoadCoordinator auto="true"/>
+<!--        <dataLoadCoordinator auto="true"/>-->
     </facets>
 
     <actions>
